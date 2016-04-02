@@ -1,3 +1,2 @@
-# michaelkong.github.io
+# thisemailisonethego.github.io
 
-My homepage and resume!
