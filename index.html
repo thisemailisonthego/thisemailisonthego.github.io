@@ -1,7 +1,303 @@
+
 <!DOCTYPE html>
-<html>
-<body>
-<h1>WELCOME TO THISEMAILISONTHEGO</h1>
-<p>Hoseted with GitHub Pages.</p>
-</body>
-</html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Michael Kong</title>
+	<link rel="icon" href="img/michael.ico">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="css/socicon.css">
+	<link rel="stylesheet" href="css/michael.css">
+	<link rel="stylesheet" href="materialize/css/materialize.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body ng-app="HomepageApp" ng-controller="HomepageController" ng-cloak>
+
+	<nav class="indigo">
+      	<div class="nav-wrapper container">
+	        <a href="#" class="brand-logo">Online Résumé</a>
+	        <ul class="right hide-on-small-only">
+				<li ng-repeat="socialLink in socialLinks"><a ng-href="{{ socialLink.link }}" class="socicon" target="_blank">{{ socialLink.text }}</a></li>
+	        </ul>
+      	</div>
+    </nav>
+
+    <div class="parallax-container valign-wrapper">
+		<div class="section no-pad-bot">
+			<div class="container center">
+				<div class="row valign-wrapper">
+					<div class="col s4">
+						<img class="profile-img circle responsive-img" src="img/michael.png">
+					</div>
+					<div class="col s8 left-align">
+						<h4 class="blue-grey-text text-darken-4">
+							{{ config.name }}
+						</h4>
+						<h5 class="indigo-text darken-1 light" ng-repeat="status in config.currentStatus">
+			              | {{ status.normal }} <a class="deep-orange-text accent-1" ng-href="{{ status.url }}" target="_blank">{{ status.link }}</a>
+					  	</h5>
+						<button class="waves-effect waves-light btn" ng-click="openAboutMeModal()">About Me</button>
+						<button class="waves-effect waves-light btn" ng-click="openAboutWebsiteModal()">About this website</button>
+					</div>
+				</div>
+			</div>
+			<div class="parallax">
+				<img ng-src="{{ parallaxImages['wollongongHarbour'].link }}" alt="{{ parallaxImages['wollongongHarbour'].alt }}" style="display: block; transform: translate3d(-50%, 200px, 0px);">
+			</div>
+		</div>
+	</div><!-- /.container -->
+
+	<div class="section">
+        <div class="container center">
+			<h4>
+				<i class="material-icons small indigo-text">build</i>
+			</h4>
+          	<h4>Skills</h4>
+
+			<div class="row">
+				<div class="col s12 m4" ng-repeat="skillLevel in skillLevels">
+					<h5>{{ skillLevel.name }}</h5>
+					<ul>
+						<li ng-repeat="skill in skillLevel.skills">{{ skill }}</li>
+					</ul>
+				</div>
+			</div>
+        </div>
+    </div>
+
+	<div class="parallax-container valign-wrapper">
+		<div class="section no-pad-bot">
+			<div class="container">
+				<div class="row center">
+					<h4>
+						<i class="material-icons small indigo-text">start</i>
+					</h4>
+					<h4>Work Experience, Achievements and Interests</h4>
+
+					<div class="row">
+						<div class="col s12 m4">
+							<p class="center">
+								<button class="waves-effect waves-light btn" ng-click="openWorkExperienceModal()">View Work Experience</button>
+							</p>
+						</div>
+						<div class="col s12 m4">
+							<p class="center">
+								<button class="waves-effect waves-light btn" ng-click="openAchievementsModal()">View Achievements</button>
+							</p>
+						</div>
+						<div class="col s12 m4">
+							<p class="center">
+								<button class="waves-effect waves-light btn" ng-click="openInterestsModal()">View Interests</button>
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- <iframe ng-src="{{ locations.wollongong }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+			</div>
+		</div>
+		<div class="parallax">
+			<img ng-src="{{ parallaxImages['wollongongBeach'].link }}" alt="{{ parallaxImages['wollongongBeach'].alt }}" style="display: block; transform: translate3d(-50%, 200px, 0px);">
+		</div>
+	</div>
+
+	<div class="section">
+        <div class="container center">
+			<h4>
+				<i class="material-icons small indigo-text">school</i>
+			</h4>
+			<h4>Academic Education</h4>
+
+			<div class="row">
+				<div class="col s12 l6" ng-repeat="school in academicEducation">
+					<h5>{{ school.name }} <small>({{ school.duration }})</small></h5>
+					<h6>{{ school.certificationName }}</h6>
+					<h6 class="">Field of study: {{ school.field }}</h6>
+					<p class="center">
+						<button class="waves-effect waves-light btn" ng-click="openEducationModal($index)">View Subjects Taken</button>
+					</p>
+				</div>
+			</div>
+        </div>
+    </div>
+
+	<div class="parallax-container valign-wrapper">
+		<div class="section no-pad-bot">
+			<div class="container">
+				<div class="row center">
+					<h4>
+						<i class="material-icons small indigo-text">mail</i>
+					</h4>
+					<h4>Contact Me</h4>
+
+					<h5 class="light">Get in touch with me via <a class="deep-orange-text accent-1" target="_blank" href="https://www.linkedin.com/in/michaelymkong">LinkedIn</a> or <a class="deep-orange-text accent-1" target="_blank" href="mailto:mymk997@uowmail.edu.au">email</a> 😄</h5>
+				</div>
+
+				<!-- <iframe ng-src="{{ locations.wollongong }}" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+			</div>
+		</div>
+
+		<div class="parallax">
+			<img ng-src="{{ parallaxImages['penangHillPanorama'].link }}" alt="{{ parallaxImages['penangHillPanorama'].alt }}" style="display: block; transform: translate3d(-50%, 200px, 0px);">
+		</div>
+	</div>
+
+	<footer class="page-footer indigo white-text no-padding">
+        <div class="footer-copyright">
+			<div class="container">
+	            &copy; 2016 Michael Y.M. Kong &#8212; Κύριος Ἰησοῦς Χριστὸς
+	        </div>
+        </div>
+    </footer>
+	<!-- Modal Trigger -->
+
+    <!-- Modal Structure -->
+    <div id="educationModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <h4>{{ educationModel.name }}</h4>
+
+			<hr>
+
+			<h5 ng-repeat-start="session in educationModel.sessions">
+				Session {{ $index + 1 }} – {{ session.period }} Session <span ng-if="session.wam">(<abbr title="Weighted Average Mark">WAM</abbr>: {{ session.wam }})</span></h5>
+			<table ng-repeat-end class="striped">
+				<tbody>
+		        <tr class="row" ng-repeat="subject in session.subjects">
+		            <td class="col s9">{{ subject.name }}</td>
+		            <td class="col s3">{{ subject.mark }}</td>
+		        </tr>
+		        </tbody>
+			</table>
+
+			<br>
+
+	    </div>
+	    <div class="modal-footer">
+	        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	    </div>
+    </div>
+
+	<div id="workExperienceModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <h4>Work Experience</h4>
+
+			<hr>
+
+			<ul>
+		      <li ng-repeat="work in workExperience">
+		        <h5>{{ work.title }}</h5>
+		        <p><a ng-href="{{ work.company.url }}" target="_blank">{{ work.company.name }}</a> | {{ work.company.location }}</p>
+		        <p class="light" ng-bind-html="work.duration"></p>
+		        <br>
+		      </li>
+		    </ul>
+	    </div>
+	    <div class="modal-footer">
+	        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	    </div>
+    </div>
+
+	<div id="achievementsModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <h4>Achievements</h4>
+
+			<hr>
+
+			<ul>
+		      <li ng-repeat="award in awards">
+		        <h5>{{ award.title }}</h5>
+		        <p>{{ award.awarder }}</p>
+		        <p class="light">{{ award.year }}</p>
+		        <br>
+		      </li>
+		    </ul>
+	    </div>
+	    <div class="modal-footer">
+	        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	    </div>
+    </div>
+
+	<div id="interestsModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <h4>Interests</h4>
+
+			<hr>
+
+			<ul>
+			  <li>Table tennis</li>
+			  <li>Linguistics</li>
+			  <li>Classical music</li>
+			  <li>Christian doctrine</li>
+			  <li>Musical theatre</li>
+			</ul>
+	    </div>
+	    <div class="modal-footer">
+	        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	    </div>
+    </div>
+
+	<div id="aboutMeModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <h4>About Me</h4>
+
+			<hr>
+
+			<p>
+				Student in the field of Computer Science and Software Engineering. Interested in:
+				<ul class="collection">
+					<li class="collection-item">Software process flows</li>
+					<li class="collection-item">Personal software processes</li>
+					<li class="collection-item">Software engineering practices and principles</li>
+				</ul>
+
+				Major interest in web technologies, especially client side services. Interested in:
+				<ul class="collection">
+					<li class="collection-item">Modular JavaScript components</li>
+					<li class="collection-item">ECMAScript standards (Class based JavaScript)</li>
+					<li class="collection-item">AngularJS (Dependency injection)</li>
+					<li class="collection-item">Angular 2 (Typescript and transcompilation)</li>
+				</ul>
+
+				Budding interest in big data, data mining and data science. Currently learning:
+				<ul class="collection">
+					<li class="collection-item">Fundamentals of data science</li>
+					<li class="collection-item">R language (syntax and features)</li>
+				</ul>
+			</p>
+	    </div>
+	    <div class="modal-footer">
+	        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	    </div>
+    </div>
+
+	<div id="aboutWebsiteModal" class="modal modal-fixed-footer">
+	    <div class="modal-content">
+	        <h4>About this website</h4>
+
+			<hr>
+
+			<p>
+				This website was inspired by the websites of two good friends: <a href="http://gunaseelankrish.wix.com/career" target="_blank">Gunaseelan Krishnamoorthy</a> and <a href="http://kapilharesh.me" target="_blank">Kapil Haresh</a>.
+			</p>
+
+			<p class="row center">
+				<span class="col s12">Built with <a href="http://materializecss.com/" target="_blank">Materialize</a> and <a href="https://angularjs.org/" target="_blank">AngularJS</a></span>
+				<span class="col s12">Webpage hosted on <a href="https://github.com/" target="_blank">GitHub</a></span>
+			</p>
+	    </div>
+	    <div class="modal-footer">
+	        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+	    </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-touch.min.js"></script>
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="materialize/js/materialize.min.js"></script>
+    <script src="js/app.js"></script>
+</body></html>
